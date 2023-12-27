@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+   <div class="cen">
+      <h1>{% block title %} Edit Blog {% endblock %}</h1>
+   
+   <form method="post">
+      <label for="new_title">New Title:</label> <br/>
+      <input type="text" id="new_title" name="new_title" value="{{ blog['title'] }}" required>
+      <br>
+      <label for="new_content">New Content:</label> <br>
+      <textarea id="new_content" name="new_content" rows="4" required>{{ blog['content'] }}</textarea>
+      <br>
+      <button type="submit">Save Changes</button>
+   </form>
+   </div>
+{% endblock %}

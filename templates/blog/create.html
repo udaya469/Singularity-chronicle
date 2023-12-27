@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="cen">
+<h1>{% block title %} Add a New Blog {% endblock %}</h1>
+<div class="fr">
+<form method="post">
+       <fieldset>
+       <label for="title">Title:</label>
+       <br>
+       <input type="text" name="title" id="title"
+              placeholder="Message title"
+              value="{{ request.form['title'] }}"></input>
+       <br>
+
+       <label for="url">URL:</label>
+       <br>
+       <input type="text" name="url" id="url"
+              placeholder="Message url"
+              value="{{ request.form['url'] }}"></input>
+       <br>
+
+       <label for="content">Content:</label>
+       <br>
+       <textarea name="content" id="content"
+                 placeholder="Message content"
+                 rows="15"
+                 cols="60"
+                 >{{ request.form['content'] }}</textarea>
+                 <br>
+       <input type="submit" >
+       </fieldset>
+</form>
+</div>
+</div>
+
+{% endblock %}
+              
+              
+              
