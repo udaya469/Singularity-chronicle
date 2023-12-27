@@ -6,16 +6,16 @@
 <div class="fr">
 <form method="post">
        <fieldset>
-       <label for="title">Title:</label>
+       <label for="title" class="lab">Title:</label>
        <br>
-       <input type="text" name="title" id="title"
+       <input class="inp" type="text" name="title" id="title"
               placeholder="Message title"
               value="{{ request.form['title'] }}"></input>
        <br>
 
        <label for="url">URL:</label>
        <br>
-       <input type="text" name="url" id="url"
+       <input class="inp" type="text" name="url" id="url"
               placeholder="Message url"
               value="{{ request.form['url'] }}"></input>
        <br>
@@ -28,7 +28,10 @@
                  cols="60"
                  >{{ request.form['content'] }}</textarea>
                  <br>
-       <input type="submit" >
+       <div class="addrow">          
+       <input class="add" type="submit" value="Submit" >
+       <input class="add" type="reset" value="Reset" >
+       </div>
        </fieldset>
 </form>
 </div>

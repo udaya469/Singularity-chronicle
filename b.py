@@ -46,7 +46,7 @@ def blog(url):
 @app.route('/create/',methods=('GET','POST'))
 def create():
     if request.method == 'POST':
-       title = request.form['title']
+       title = request.form['title'].upper()
        url = request.form['url']
        content = request.form['content']
 
@@ -58,11 +58,17 @@ def create():
            flash('Content is required!')
        else:
            conn = connection()
-           conn.execute('INSERT INTO posts (title, url, content) VALUES (?, ? ,?)',
+           cursor = conn.execute('SELECT COUNT(*) FROM posts WHERE url = ?', (url,))
+           count = cursor.fetchone()[0]
+
+           if count > 0:
+                flash('Error: URL already exists!')
+           else:
+                conn.execute('INSERT INTO posts (title, url, content) VALUES (?, ? ,?)',
                         (title, url, content))
-           conn.commit()
-           conn.close()
-           return redirect(url_for('blogs'))
+                conn.commit()
+                conn.close()
+                return redirect(url_for('blogs'))
 
     return render_template('blog/create.html')
 
@@ -71,15 +77,20 @@ def edit(url):
     conn = connection()
 
     if request.method == 'POST':
-        new_title = request.form['new_title']
+        new_title = request.form['new_title'].upper()
+
         new_content = request.form['new_content']
 
-#flash
-
-        conn.execute('UPDATE posts SET title = ?, content = ? WHERE url = ?', (new_title, new_content, url))
-        conn.commit()
-        conn.close()
-        return redirect(url_for('blogs'))
+        if not new_title:
+            flash('Title is required!')
+        elif not new_content:
+            flash('Content is required!')
+        else:
+            conn.execute('UPDATE posts SET title = ?, content = ? WHERE url = ?', (new_title, new_content, url))
+            conn.commit()
+            conn.close()
+            flash('Blog Updated!')
+            return redirect(url_for('blogs'))
 
     blog = conn.execute('SELECT * FROM posts WHERE url = ?', (url,)).fetchone()
     conn.close()

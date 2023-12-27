@@ -91,8 +91,17 @@
             
         }
         
-        .hed img{
+        .hed .img1{
             margin-top: 15px;
+        }
+
+        .hed .img2{
+
+            height: 18vh;
+            width: 20vh;
+            margin-top: -12vh;
+            margin-left: -85vw;
+
         }
 
         .alert {
@@ -107,7 +116,7 @@
         }
 
         .s1{
-            height: 100vh; 
+            min-height: 100vh; 
             width: 100%;
             background-color: #490437;
             background-color: #6f0152;
@@ -172,11 +181,12 @@
         }
 
         .right2{
-            margin-top: -170px;
+            margin-top: 100px;
             margin-left: 85%;
             display: flex;
             flex-direction: row;
             gap: 15px;
+            position: static;
         }
         
         .right2 button{
@@ -208,13 +218,16 @@
 
         .fr fieldset{
             display: inline;
+            position: relative;
             border-radius: 50px;
             color: #000000;
             border: none;
             background-color:#ffffff;
             padding: 50px;
             width: 45vw;
+            height: fit-content;
             padding-left: 100px;
+            
         }
 
         .fr ::placeholder{
@@ -223,7 +236,7 @@
             padding: 10px;
         }
         
-        .fr input{
+        .fr .inp{
             background-color:#000000;
             border-radius: 50px;
             border: none;
@@ -235,9 +248,11 @@
         }
         
 
-        .fr label{
-            padding-bottom: 30px;
-            padding-top: 30px;
+        .lab{
+            padding-bottom: 20%;
+            padding-top: 20%;
+            
+            padding-right: 100px;
         }
 
         .fr textarea{
@@ -251,6 +266,34 @@
             color: #f54e06;
         }
 
+        .add{
+
+            background-color: #24d75a;
+            border-radius: 50px;
+            color: #000000;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s ease-in-out;
+            border: none;
+            padding: 10px;
+            width: 40%;
+            margin-left: 10px;
+            
+        }
+
+        .add:hover{
+            background-color: #f54e06;
+
+        }
+        .addrow {
+            
+            display: flex;
+            flex-direction: row;
+
+        }
+      
+
 
 
 
@@ -261,7 +304,7 @@
 <body>
     <header class="hed">
         <a href="{{ url_for('index')}}">
-        <img src="https://res.cloudinary.com/dgnsxz9xp/image/upload/v1703596310/mypics/fe2oh4l0uonr8w7qa8ry.png" 
+        <img  class="img1" src="https://res.cloudinary.com/dgnsxz9xp/image/upload/v1703596310/mypics/fe2oh4l0uonr8w7qa8ry.png" 
         height="75px" width="200px"> </a>
 
         <div class="right">
@@ -269,6 +312,8 @@
             <a href="#log">Log In</a>
             <a href="#sig">Sign Up</a>
           </div>
+
+        <img class="img2" src="https://res.cloudinary.com/dgnsxz9xp/image/upload/v1703679383/mypics/green_brain.png" >
       
 
     </header>

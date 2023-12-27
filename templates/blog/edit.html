@@ -3,15 +3,34 @@
 {% block content %}
    <div class="cen">
       <h1>{% block title %} Edit Blog {% endblock %}</h1>
-   
-   <form method="post">
-      <label for="new_title">New Title:</label> <br/>
-      <input type="text" id="new_title" name="new_title" value="{{ blog['title'] }}" required>
-      <br>
-      <label for="new_content">New Content:</label> <br>
-      <textarea id="new_content" name="new_content" rows="4" required>{{ blog['content'] }}</textarea>
-      <br>
-      <button type="submit">Save Changes</button>
-   </form>
+      <div class="fr">
+         <form method="post">
+                <fieldset>
+                <label for="new_title" class="lab">Title:</label>
+                <br>
+                <input class="inp" type="text" name="new_title" id="new_title"
+                       placeholder="Message title"
+                       value="{{ blog['title'] }}"></input>
+                <br>
+         
+                
+         
+                <label for="new_content">Content:</label>
+                <br>
+                <textarea name="new_content" id="new_content"
+                          placeholder="Message content"
+                          rows="15"
+                          cols="60"
+                          >{{ blog['content'] }}</textarea>
+                          <br>
+                <div class="addrow">          
+                <input class="add" type="submit" value="Submit" >
+                <input class="add" type="reset" value="Reset" >
+                </div>
+                </fieldset>
+         </form>
+         </div>
    </div>
 {% endblock %}
+
+
