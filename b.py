@@ -5,12 +5,7 @@ import sqlite3
 
 app = Flask(__name__)
 
-'''blog_posts = [
-        {"title": 'ARTIFICIAL INTELLIGENCE', "body": 'first blog body',"url": 'ai'},
-        {"title": 'ROBOTICS', "body": 'second blog body',"url": 'rb'},
-        {"title": 'ETHICAL HACKING', "body": 'third blog body',"url": 'eh'}
-]
-'''
+
 
 def connection():
     conn = sqlite3.connect('database.db')
