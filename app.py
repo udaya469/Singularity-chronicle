@@ -97,4 +97,5 @@ def delete_blog(url):
     conn.execute('DELETE FROM posts WHERE url = ?', (url,))
     conn.commit()
     conn.close()
+    flash('Blog Deleted!')
     return redirect(url_for('blogs'))
