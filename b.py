@@ -22,21 +22,21 @@ def get_data():
 @app.route('/')
 @app.route('/index/')
 def index():
-        return render_template('blog/intro.html')
+        return render_template('intro.html')
 
 @app.route('/blogs/')
 def blogs():
         blog_posts = get_data()
-        return render_template('blog/blogs.html',blogs=blog_posts)
+        return render_template('blogs.html',blogs=blog_posts)
 
 
 
-@app.route('/blogs/<url>')
+@app.route('/blogs/<url>/')
 def blog(url):
         blog_posts = get_data()
         for blog in blog_posts:
                 if blog['url'] == url:
-                        return render_template('blog/blog.html',blog=blog)
+                        return render_template('blog.html',blog=blog)
 
 @app.route('/create/',methods=('GET','POST'))
 def create():
@@ -65,7 +65,7 @@ def create():
                 conn.close()
                 return redirect(url_for('blogs'))
 
-    return render_template('blog/create.html')
+    return render_template('create.html')
 
 @app.route('/blogs/<url>/edit', methods=['GET', 'POST'])
 def edit(url):
@@ -89,7 +89,7 @@ def edit(url):
 
     blog = conn.execute('SELECT * FROM posts WHERE url = ?', (url,)).fetchone()
     conn.close()
-    return render_template('blog/edit.html', blog=blog)
+    return render_template('edit.html', blog=blog)
 
 @app.route('/blogs/<url>/delete', methods=['POST'])
 def delete_blog(url):
