@@ -67,7 +67,7 @@ def create():
 
     return render_template('create.html')
 
-@app.route('/blogs/<url>/edit', methods=['GET', 'POST'])
+@app.route('/blogs/<url>/edit/', methods=['GET', 'POST'])
 def edit(url):
     conn = connection()
 
@@ -91,7 +91,7 @@ def edit(url):
     conn.close()
     return render_template('edit.html', blog=blog)
 
-@app.route('/blogs/<url>/delete', methods=['POST'])
+@app.route('/blogs/<url>/delete/', methods=['POST'])
 def delete_blog(url):
     conn = connection()
     conn.execute('DELETE FROM posts WHERE url = ?', (url,))
